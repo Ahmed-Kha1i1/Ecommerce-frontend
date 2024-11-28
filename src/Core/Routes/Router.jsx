@@ -1,11 +1,17 @@
 import { useRoutes } from "react-router-dom";
 import Dashboard from "../Pages/Dashboard";
+import AppLayout from "../ui/AppLayout";
 function Router() {
   const routes = [
     {
-      index: true,
-      path: "/",
-      element: <Dashboard />,
+      element: <AppLayout />,
+      children: [
+        {
+          index: true,
+          path: "/",
+          element: <Dashboard />,
+        },
+      ],
     },
   ];
   return useRoutes(routes);
