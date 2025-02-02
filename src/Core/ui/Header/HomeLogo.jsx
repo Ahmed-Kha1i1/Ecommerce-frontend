@@ -1,18 +1,16 @@
+import { Link } from "react-router-dom";
+
 function HomeLogo() {
   return (
-    <a
-      href="https://flowbite-admin-dashboard.vercel.app/"
-      className="ml-2 flex md:mr-24"
+    <Link
+      to="/"
+      className="xs:ml-2 xs:flex-row ml-1 flex flex-col items-center justify-center md:mr-24"
     >
-      <img
-        src="https://flowbite-admin-dashboard.vercel.app/images/logo.svg"
-        className="mr-3 h-8"
-        alt="Ecommerce Logo"
-      />
-      <span className="self-center whitespace-nowrap text-xl font-semibold text-white sm:text-2xl">
+      <img src="/ecommerce.ico" className="xs:h-8 mr-3 h-6" alt="Logo" />
+      <span className="xs:text-xl self-center whitespace-nowrap text-base font-semibold text-white sm:text-2xl">
         Ecommerce
       </span>
-    </a>
+    </Link>
   );
 }
 

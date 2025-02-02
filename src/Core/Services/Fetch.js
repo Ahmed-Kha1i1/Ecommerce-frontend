@@ -1,10 +1,20 @@
 export default async function fetchData(url, options = {}) {
+  options.credentials = "include";
+
   try {
-    let res = await fetch(url, options);
+    let response = await fetch(url, options);
 
-    const data = await res.json?.();
+    if (response.status === 401) {
+      throw new Error("Unauthorized");
+    }
 
-    if (!res.ok) throw new Error(data?.message || "An error occurred");
+    let data;
+    const contentType = response.headers.get("content-type");
+    if (contentType && contentType.includes("application/json")) {
+      data = await response.json();
+    }
+
+    if (!response.ok) throw new Error(data?.message || "An error occurred");
 
     return data;
   } catch (error) {

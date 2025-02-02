@@ -1,21 +1,21 @@
+/* eslint-disable react/prop-types */
 import DiscountBadge from "./DiscountBadge";
 import ProductCardDetails from "./ProductCardDetails";
 
-function ProductCardH() {
+function ProductCardH({ product }) {
   return (
-    <div
-      href="#"
-      className="relative flex w-full flex-col items-center rounded-lg border border-gray-200 bg-white shadow hover:bg-gray-100 md:flex-row"
-    >
-      <a href="#" className="block min-w-52">
-        <DiscountBadge percentage={15} position="left" />
+    <div className="relative flex max-h-[248px] w-full items-center rounded-lg border border-gray-200 bg-white shadow hover:shadow-selected-card">
+      <a href={`/Products/${product.id}`} className="block w-52 p-2">
+        {product?.rate && (
+          <DiscountBadge percentage={product?.rate} position="left" />
+        )}
         <img
-          className="h-auto w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
-          src="apple-watch.png"
-          alt="product image"
+          className="h-auto max-h-[228px] max-w-48 rounded-t-lg object-cover md:h-auto md:rounded-none md:rounded-s-lg"
+          src={product.imageURL}
+          alt={product.Title}
         />
       </a>
-      <ProductCardDetails />
+      <ProductCardDetails product={product} />
     </div>
   );
 }

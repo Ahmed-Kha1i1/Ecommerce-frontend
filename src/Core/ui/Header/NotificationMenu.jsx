@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function NotificationMenu() {
   return (
     <div
@@ -15,8 +17,8 @@ function NotificationMenu() {
         Notifications
       </div>
       <div>
-        <a
-          href="#"
+        <Link
+          to="#"
           className="flex border-b px-4 py-3 hover:bg-gray-100 dark:border-gray-600 dark:hover:bg-gray-600"
         >
           <div className="flex-shrink-0">
@@ -49,9 +51,9 @@ function NotificationMenu() {
               a few moments ago
             </div>
           </div>
-        </a>
-        <a
-          href="#"
+        </Link>
+        <Link
+          to="#"
           className="flex border-b px-4 py-3 hover:bg-gray-100 dark:border-gray-600 dark:hover:bg-gray-600"
         >
           <div className="flex-shrink-0">
@@ -86,9 +88,9 @@ function NotificationMenu() {
               10 minutes ago
             </div>
           </div>
-        </a>
-        <a
-          href="#"
+        </Link>
+        <Link
+          to="#"
           className="flex border-b px-4 py-3 hover:bg-gray-100 dark:border-gray-600 dark:hover:bg-gray-600"
         >
           <div className="flex-shrink-0">
@@ -127,9 +129,9 @@ function NotificationMenu() {
               44 minutes ago
             </div>
           </div>
-        </a>
-        <a
-          href="#"
+        </Link>
+        <Link
+          to="#"
           className="flex border-b px-4 py-3 hover:bg-gray-100 dark:border-gray-600 dark:hover:bg-gray-600"
         >
           <div className="flex-shrink-0">
@@ -168,9 +170,9 @@ function NotificationMenu() {
               1 hour ago
             </div>
           </div>
-        </a>
-        <a
-          href="#"
+        </Link>
+        <Link
+          to="#"
           className="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600"
         >
           <div className="flex-shrink-0">
@@ -202,10 +204,10 @@ function NotificationMenu() {
               3 hours ago
             </div>
           </div>
-        </a>
+        </Link>
       </div>
-      <a
-        href="#"
+      <Link
+        to="#"
         className="block bg-gray-50 py-2 text-center text-base font-normal text-gray-900 hover:bg-gray-100 dark:bg-gray-700 dark:text-white dark:hover:underline"
       >
         <div className="inline-flex items-center">
@@ -224,7 +226,7 @@ function NotificationMenu() {
           </svg>
           View all
         </div>
-      </a>
+      </Link>
     </div>
   );
 }

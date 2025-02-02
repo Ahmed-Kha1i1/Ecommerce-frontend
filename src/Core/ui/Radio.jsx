@@ -1,15 +1,17 @@
 /* eslint-disable react/prop-types */
-function Radio({ value, children, name, checked = false }) {
+function Radio({ id, value, name, onChange, children, ...props }) {
   return (
     <div className="flex items-center">
       <input
-        name={name}
+        id={id}
         value={value}
         type="radio"
-        defaultChecked={checked}
+        name={name}
+        onChange={onChange}
+        {...props}
         className="size-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
       />
-      <label htmlFor="filter-color-3" className="ml-3 text-base text-gray-800">
+      <label htmlFor={id} className="ml-3 text-base text-gray-800">
         {children || value}
       </label>
     </div>

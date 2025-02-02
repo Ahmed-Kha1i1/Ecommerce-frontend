@@ -6,3 +6,11 @@ export async function getMainCategories() {
 
   return result.data;
 }
+
+export async function getCategory(CategoryId, signal) {
+  const result = await fetchData(`${BASE_URL}/api/Categories/${CategoryId}`, {
+    signal,
+  });
+
+  return result.data;
+}

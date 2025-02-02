@@ -1,0 +1,5 @@
+{
+  "codeguard.model": "gpt-3.5",
+  "codeguard.debounceTime": 1500,
+  "codeguard.realTimeAnalysis": true
+}

@@ -2,6 +2,7 @@
 import Star from "./Star";
 
 function Stars({ starsNumber = 5 }) {
+  if (!starsNumber) return null;
   return (
     <div className="flex items-center">
       <Star isFull={starsNumber >= 1} />

@@ -1,26 +1,29 @@
+/* eslint-disable react/prop-types */
 import Filters from "./Filters";
 import { RiFilter2Fill } from "react-icons/ri";
 import DrawerOverlay from "./DrawerOverlay";
 
-function MobileFilters() {
+function MobileFilters({ products, category }) {
   return (
     <DrawerOverlay
       position="right"
-      renderTrigger={(setIsClosed) => (
+      title="Filters"
+      renderTrigger={(Open) => (
         <button
           type="button"
           className="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden"
-          onClick={() => setIsClosed(false)}
+          onClick={() => Open()}
         >
           <span className="sr-only">Filters</span>
           <RiFilter2Fill className="size-6" />
         </button>
       )}
-    >
-      <div className="h-full">
-        <Filters />
-      </div>
-    </DrawerOverlay>
+      renderChildren={(Close) => (
+        <div className="h-full">
+          <Filters products={products} category={category} onClose={Close} />
+        </div>
+      )}
+    ></DrawerOverlay>
   );
 }
 

@@ -1,19 +1,36 @@
 import { IoIosArrowDown } from "react-icons/io";
 import useToggleMenu from "../../../Core/Hooks/useToggleMenu";
 import useOutsideClick from "../../../Core/Hooks/useOutsideClick";
+import useFilterParams, {
+  filterKeys,
+} from "../../../Core/Hooks/useFilterParams";
 const SortBy = [
-  "Most Popular",
-  "Best Rating",
-  "Newest",
-  "Price: Low to High",
-  "Price: High to Low",
+  { text: "Rate: High to Low", orderBy: "stars", direction: "desc" },
+  { text: "Rate: Low to High", orderBy: "stars", direction: "asc" },
+  { text: "Price: Low to High", orderBy: "price", direction: "asc" },
+  { text: "Price: High to Low", orderBy: "price", direction: "desc" },
 ];
 
 function Sort() {
-  const { isHidden, toggle, OnClickItem, selectedItem, hide } = useToggleMenu(
-    SortBy[0],
-  );
+  const [searchParams, setSearchParams] = useFilterParams();
+  const defaultOrderby = searchParams.get(filterKeys.ORDER_BY);
+  const defaultDirection = searchParams.get(filterKeys.ORDER_DIRECTION);
+  const selectedSort =
+    SortBy.find(
+      (sort) =>
+        sort.orderBy === defaultOrderby && sort.direction === defaultDirection,
+    ) || SortBy[0];
+
+  const { isHidden, toggle, OnClickItem, selectedItem, hide } =
+    useToggleMenu(selectedSort);
   const ref = useOutsideClick(hide);
+
+  function onSort(sortItem) {
+    searchParams.set(filterKeys.ORDER_BY, sortItem.orderBy);
+    searchParams.set(filterKeys.ORDER_DIRECTION, sortItem.direction);
+    setSearchParams();
+  }
+
   return (
     <div className="relative inline-block text-left">
       <div>
@@ -25,7 +42,7 @@ function Sort() {
           aria-haspopup="true"
           onClick={toggle}
         >
-          Sort by: {selectedItem}
+          Sort by: {selectedItem.text}
           <IoIosArrowDown className="-mr-1 ml-1 size-5 shrink-0 text-gray-400 group-hover:text-gray-500" />
         </button>
       </div>
@@ -39,14 +56,17 @@ function Sort() {
         ref={ref}
       >
         <div className="py-1" role="none">
-          {SortBy.map((value) => (
-            <li key={value}>
+          {SortBy.map((sortItem) => (
+            <li key={sortItem.text}>
               <button
                 type="button"
                 className="inline-flex w-full px-4 py-2 text-base hover:bg-light-gray"
-                onClick={() => OnClickItem(value)}
+                onClick={() => {
+                  OnClickItem(sortItem);
+                  onSort(sortItem);
+                }}
               >
-                {value}
+                {sortItem.text}
               </button>
             </li>
           ))}

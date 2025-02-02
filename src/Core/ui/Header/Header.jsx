@@ -1,29 +1,23 @@
+import CategoriesExplorer from "../../../Feasures/Products/CategoriesExplorer";
 import Cart from "./Cart";
 import CategorySearch from "./CategorySearch";
 import CurrentUser from "./CurrentUser";
 import HomeLogo from "./HomeLogo";
-import Notification from "./Notification";
-import Sidebar from "./Sidebar";
 
 function Header() {
   return (
-    <nav className="bg-main-dark w-full">
+    <nav className="w-full bg-main-dark">
       <div className="px-3 py-3 lg:px-5 lg:pl-3">
         <div className="grid grid-cols-[auto_1fr_auto] items-center justify-between">
           <div className="flex items-center justify-start">
-            <Sidebar />
+            <CategoriesExplorer />
             <HomeLogo />
           </div>
 
           <CategorySearch />
-          <div className="flex items-center justify-end">
-            <div className="-mb-1 mr-3 hidden sm:block">
-              <span></span>
-            </div>
-
-            <Notification />
-            <Cart />
+          <div className="ml-1 flex items-center justify-end gap-1 xs:ml-2 xs:gap-2">
             <CurrentUser />
+            <Cart />
           </div>
         </div>
       </div>
